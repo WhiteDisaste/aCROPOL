@@ -1,0 +1,47 @@
+﻿<Window x:Class="aCROPOL.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aCROPOL"
+        mc:Ignorable="d"
+        Title="Window2" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Image/453_original.jpg"  
+               Grid.Column="1" 
+               Grid.Row="0"
+              Stretch="Fill"/>
+        <Image Source="/Image/agentstvo-nedvizhimosti-heops.jpg" 
+       Grid.Column="0" 
+               Grid.Row="0"
+              Stretch="Fill" />
+        <Button Content="Выход" FontSize="15"
+                Height="25" Width="100"
+                FontWeight="Bold"
+                BorderBrush="Transparent" 
+                VerticalAlignment="Top" 
+                Click="Button_Click"
+                Background="White"
+                Margin="91,350,73,0"/>
+        <StackPanel VerticalAlignment="Center" >
+            <Button x:Name="PO" Content="Прибыль по объектам"
+                    Width="200" Height="30" FontWeight="Bold" Background="White"
+                    FontSize="15" Margin="10" Click="PO_Click"/>
+            <Button x:Name="SP" Content="Изменить сумму платежа"
+                    Width="200" Height="30" FontWeight="Bold" Background="White"
+                    FontSize="15" Margin="10" Click="SP_Click"/>
+
+        </StackPanel>
+        <Frame x:Name="FrameArendaMain"
+       NavigationUIVisibility="Hidden"
+       Grid.Column="1"/>
+    </Grid>
+</Window>

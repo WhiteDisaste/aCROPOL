@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище akropolkuryaeva21Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bathrooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HousingStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="FloorsBuilding" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Occupied" Type="int" Nullable="false" />
+          <Property Name="YearConstruction" Type="date" Nullable="false" />
+          <Property Name="IDLocation" Type="int" Nullable="false" />
+          <Property Name="NumberRooms" Type="int" Nullable="false" />
+          <Property Name="IDNumberBathrooms" Type="int" Nullable="false" />
+          <Property Name="Conditioners" Type="bit" Nullable="false" />
+          <Property Name="SummaObjectCadastre" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MarketValueObject" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RentalCost" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IDReantalBuildings" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDRole" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDHousingStock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalBuildings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Vid" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_HousingStock_Bathrooms">
+          <End Role="Bathrooms" Type="Self.Bathrooms" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bathrooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDNumberBathrooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HousingStock_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HousingStock_RentalBuildings">
+          <End Role="RentalBuildings" Type="Self.RentalBuildings" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalBuildings">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDReantalBuildings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_HousingStock">
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingStock">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="IDHousingStock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище akropolkuryaeva21ModelContainer">
+          <EntitySet Name="Bathrooms" EntityType="Self.Bathrooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HousingStock" EntityType="Self.HousingStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalBuildings" EntityType="Self.RentalBuildings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HousingStock_Bathrooms" Association="Self.FK_HousingStock_Bathrooms">
+            <End Role="Bathrooms" EntitySet="Bathrooms" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HousingStock_Location" Association="Self.FK_HousingStock_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HousingStock_RentalBuildings" Association="Self.FK_HousingStock_RentalBuildings">
+            <End Role="RentalBuildings" EntitySet="RentalBuildings" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_HousingStock" Association="Self.FK_Manager_HousingStock">
+            <End Role="HousingStock" EntitySet="HousingStock" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Role" Association="Self.FK_Manager_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="akropolkuryaeva21Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bathrooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HousingStock" Relationship="Self.FK_HousingStock_Bathrooms" FromRole="Bathrooms" ToRole="HousingStock" />
+        </EntityType>
+        <EntityType Name="HousingStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="FloorsBuilding" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Occupied" Type="Int32" Nullable="false" />
+          <Property Name="YearConstruction" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDLocation" Type="Int32" Nullable="false" />
+          <Property Name="NumberRooms" Type="Int32" Nullable="false" />
+          <Property Name="IDNumberBathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Conditioners" Type="Boolean" Nullable="false" />
+          <Property Name="SummaObjectCadastre" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="MarketValueObject" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="RentalCost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IDReantalBuildings" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bathrooms" Relationship="Self.FK_HousingStock_Bathrooms" FromRole="HousingStock" ToRole="Bathrooms" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_HousingStock_Location" FromRole="HousingStock" ToRole="Location" />
+          <NavigationProperty Name="RentalBuildings" Relationship="Self.FK_HousingStock_RentalBuildings" FromRole="HousingStock" ToRole="RentalBuildings" />
+          <NavigationProperty Name="Manager" Relationship="Self.FK_Manager_HousingStock" FromRole="HousingStock" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HousingStock" Relationship="Self.FK_HousingStock_Location" FromRole="Location" ToRole="HousingStock" />
+        </EntityType>
+        <EntityType Name="Manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDRole" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDHousingStock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HousingStock" Relationship="Self.FK_Manager_HousingStock" FromRole="Manager" ToRole="HousingStock" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Manager_Role" FromRole="Manager" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="RentalBuildings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Vid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="HousingStock" Relationship="Self.FK_HousingStock_RentalBuildings" FromRole="RentalBuildings" ToRole="HousingStock" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Manager" Relationship="Self.FK_Manager_Role" FromRole="Role" ToRole="Manager" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_HousingStock_Bathrooms">
+          <End Role="Bathrooms" Type="Self.Bathrooms" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bathrooms">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDNumberBathrooms" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HousingStock_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HousingStock_RentalBuildings">
+          <End Role="RentalBuildings" Type="Self.RentalBuildings" Multiplicity="1" />
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalBuildings">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HousingStock">
+              <PropertyRef Name="IDReantalBuildings" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_HousingStock">
+          <End Role="HousingStock" Type="Self.HousingStock" Multiplicity="1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HousingStock">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="IDHousingStock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Manager_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Manager" Type="Self.Manager" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Manager">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="akropolkuryaeva21Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bathrooms" EntityType="Self.Bathrooms" />
+          <EntitySet Name="HousingStock" EntityType="Self.HousingStock" />
+          <EntitySet Name="Location" EntityType="Self.Location" />
+          <EntitySet Name="Manager" EntityType="Self.Manager" />
+          <EntitySet Name="RentalBuildings" EntityType="Self.RentalBuildings" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_HousingStock_Bathrooms" Association="Self.FK_HousingStock_Bathrooms">
+            <End Role="Bathrooms" EntitySet="Bathrooms" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HousingStock_Location" Association="Self.FK_HousingStock_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HousingStock_RentalBuildings" Association="Self.FK_HousingStock_RentalBuildings">
+            <End Role="RentalBuildings" EntitySet="RentalBuildings" />
+            <End Role="HousingStock" EntitySet="HousingStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_HousingStock" Association="Self.FK_Manager_HousingStock">
+            <End Role="HousingStock" EntitySet="HousingStock" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Manager_Role" Association="Self.FK_Manager_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Manager" EntitySet="Manager" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище akropolkuryaeva21ModelContainer" CdmEntityContainer="akropolkuryaeva21Entities">
+          <EntitySetMapping Name="Bathrooms">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.Bathrooms">
+              <MappingFragment StoreEntitySet="Bathrooms">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HousingStock">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.HousingStock">
+              <MappingFragment StoreEntitySet="HousingStock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FloorsBuilding" ColumnName="FloorsBuilding" />
+                <ScalarProperty Name="Occupied" ColumnName="Occupied" />
+                <ScalarProperty Name="YearConstruction" ColumnName="YearConstruction" />
+                <ScalarProperty Name="IDLocation" ColumnName="IDLocation" />
+                <ScalarProperty Name="NumberRooms" ColumnName="NumberRooms" />
+                <ScalarProperty Name="IDNumberBathrooms" ColumnName="IDNumberBathrooms" />
+                <ScalarProperty Name="Conditioners" ColumnName="Conditioners" />
+                <ScalarProperty Name="SummaObjectCadastre" ColumnName="SummaObjectCadastre" />
+                <ScalarProperty Name="MarketValueObject" ColumnName="MarketValueObject" />
+                <ScalarProperty Name="RentalCost" ColumnName="RentalCost" />
+                <ScalarProperty Name="IDReantalBuildings" ColumnName="IDReantalBuildings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manager">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.Manager">
+              <MappingFragment StoreEntitySet="Manager">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IDHousingStock" ColumnName="IDHousingStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalBuildings">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.RentalBuildings">
+              <MappingFragment StoreEntitySet="RentalBuildings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Vid" ColumnName="Vid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="akropolkuryaeva21Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="aCROPOL.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:aCROPOL"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="4*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/Image/453_original.jpg"  
+               Grid.Column="1" 
+               Grid.Row="0"
+              Stretch="Fill"/>
+        <Image Source="/Image/agentstvo-nedvizhimosti-heops.jpg" 
+       Grid.Column="0" 
+               Grid.Row="0"
+              Stretch="Fill" />
+        <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Text="Авторизация" Margin="20" 
+                       FontWeight="Bold" 
+                       FontSize="30"/>
+            <TextBlock Text="Логин" FontSize="16"
+                       FontWeight="Bold"/>
+            <TextBox Name="LoginTB" BorderThickness="0 0 0 1"/>
+            <TextBlock Text="Пароль" FontSize="16"
+                       FontWeight="Bold"/>
+            <PasswordBox Name="PasswordTB" BorderThickness="0 0 0 1"/>
+            <Button Click="Button_Click" 
+                    Content="Войти в систему" 
+                    Margin="20"  Width="150" 
+                    FontWeight="Bold" 
+                    FontSize="14"
+                    Background="White"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,41 @@
+﻿<Page x:Class="aCROPOL.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:aCROPOL"
+      mc:Ignorable="d"
+      Title="Page1" Height="420" Width="510">
+    <ScrollViewer>
+        
+   
+    <Grid Margin="0,-25,0,0">
+        
+        <Label Content="Этажность здания" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="108,5,0,0" VerticalAlignment="Top" Height="33"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TB1" Height="21" Margin="322,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Занимаемый этаж" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="106,42,0,0" VerticalAlignment="Top" Height="33"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TB2" Height="20" Margin="322,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Дата постройки" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="108,80,0,0" VerticalAlignment="Top" Height="33"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TB3" Height="21" Margin="322,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Расположение" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="108,117,0,0" VerticalAlignment="Top" Height="33"/>
+        <ComboBox HorizontalAlignment="Left"  x:Name="TB4" VerticalAlignment="Top" Width="120" Margin="322,128,0,0" Height="20"/>
+        <Label Content="Количество комнат" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="108,159,0,0" VerticalAlignment="Top" Height="32"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TB5" Height="21" Margin="322,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Количество санузлов" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="106,196,0,0" VerticalAlignment="Top" Height="33"/>
+        <TextBox HorizontalAlignment="Left" x:Name="TB6" Height="20" Margin="322,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Тип ванной комнаты" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="108,234,0,0" VerticalAlignment="Top" Height="32"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="TB7" Margin="322,241,0,0" VerticalAlignment="Top" Width="120" Height="20"/>
+        <Label Content="Наличие кондиционера" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="112,264,0,0" VerticalAlignment="Top" Height="33"/>
+        <CheckBox Content="" HorizontalAlignment="Left" x:Name="TB8" Margin="371,277,0,0" VerticalAlignment="Top" Height="21"/>
+        <Label Content="Стоимость по кадатру" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="112,291,0,0" VerticalAlignment="Top" Height="33"/>
+        <TextBox HorizontalAlignment="Left" Height="21" x:Name="TB9" Margin="341,303,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Рыночная стоимость" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="109,324,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" x:Name="TB10" Margin="341,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Арендная стоимость" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="109,353,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" x:Name="TB11" Margin="341,357,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Адрес" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="112,377,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" x:Name="TB12" Margin="341,391,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Добавить" Click="Button_Click"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="249,420,0,0"/>
+    </Grid>
+    </ScrollViewer>
+</Page>

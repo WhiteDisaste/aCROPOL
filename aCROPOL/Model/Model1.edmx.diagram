@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f97da648b23a4e2aa2abf4902c3c2977" Name="Diagram1">
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.Bathrooms" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.HousingStock" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.Location" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.Manager" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.RentalBuildings" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.Role" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="akropolkuryaeva21Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="akropolkuryaeva21Model.FK_HousingStock_Bathrooms" ManuallyRouted="false" />
+        <AssociationConnector Association="akropolkuryaeva21Model.FK_HousingStock_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="akropolkuryaeva21Model.FK_HousingStock_RentalBuildings" ManuallyRouted="false" />
+        <AssociationConnector Association="akropolkuryaeva21Model.FK_Manager_HousingStock" ManuallyRouted="false" />
+        <AssociationConnector Association="akropolkuryaeva21Model.FK_Manager_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
